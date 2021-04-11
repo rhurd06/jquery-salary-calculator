@@ -1,6 +1,11 @@
 body, section {
     margin: 2rem;
 }
+table {
+    border: black;
+    border-width: 5px;
+    border-style: solid;
+}
 tr {
     font-size: larger;
 }
@@ -9,5 +14,5 @@ table.employee-information tfoot {
     font-size: x-large;
 }
 tr:nth-child(even){
-    background-color: #dddddd;
-}
+   background-color: rgb(162, 221, 221);
+} 
