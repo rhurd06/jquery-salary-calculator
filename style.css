@@ -1,18 +1,20 @@
 body, section {
     margin: 2rem;
 }
-table {
-    border: black;
-    border-width: 5px;
-    border-style: solid;
-}
-tr {
-    font-size: larger;
-}
-table.employee-information tfoot {
+.table tr { 
+    font-size: larger; 
+} 
+
+.table tfoot{
     text-align: right;
     font-size: x-large;
 }
-tr:nth-child(even){
-   background-color: rgb(162, 221, 221);
-} 
+
+.table-striped tr:nth-child(even){
+    background-color: rgb(162, 221, 221);
+}
+.table-bordered {
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
