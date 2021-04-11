@@ -1,15 +1,39 @@
 console.log('Hi jQuery');
 
-const startingEmployee = [ ];
-
 $(document).ready(onReady);
+
+const startingEmployee = [
+    {
+        firstName: 'Jen',
+        lastName: 'Barber',
+        employeeID: '4521',
+        jobTitle: 'Team Lead',
+        annualSalary: 80000,
+    },
+    {
+        firstName: 'Maurice',
+        lastName: 'Moss',
+        employeeID: '8724',
+        jobTitle: 'Support Team',
+        annualSalary: 58000,
+    },
+    {
+        firstName: 'Roy',
+        lastName: 'Smith',
+        employeeID: '9623',
+        jobTitle: 'Quality Assurance',
+        annualSalary: 48000,
+    }
+ ];
 
 function onReady() {
     //setup handlers
     $('#submit-employee').on('click', handleAddEmployee);
     $('#out-employees').on('click', '.delete', deleteEmployee);
     renderEmployees();
+    monthlySalaryTotal();
 }//end onReady
+
 function deleteEmployee() {
     console.log('Deleting employee...');
     $(this).closest('tr').remove();
@@ -43,13 +67,14 @@ function handleAddEmployee() {
         lastName: $('#in-last-name').val(),
         employeeID: $('#in-employee-id').val(),
         jobTitle: $('#in-job-title').val(),
-        annualSalary: $('#in-annual-salary').val(),
+        annualSalary: Number($('#in-annual-salary').val()),
         };
         //Add employee to array
     startingEmployee.push(newEmployee);
     console.log(startingEmployee)
     renderEmployees();
-    clearInputParams();  
+    clearInputParams();
+    monthlySalaryTotal();
 }//end handleAddEmployee
 
 
@@ -63,10 +88,19 @@ function clearInputParams() {
 
 function monthlySalaryTotal() {
     let sum = 0;
-    for(let x=0; x<startingEmployee[x].length; x++){
-        sum += startingEmployee[x].annualSalary / 12;
+    for(let x=0; x<startingEmployee.length; x++){
+        sum += Number(startingEmployee[x].annualSalary / 12);
     }
+    $('#total-salary').empty();
+    $('#total-salary').append(sum);
+    addRed(sum);
     return sum;
 }//end monthlySalaryTotal
 console.log('The monthly total salary is:', monthlySalaryTotal(startingEmployee));
+
+function addRed(monthlySalaryTotal) {
+    if( monthlySalaryTotal> 20000){
+        $('#total-salary').css('background-color', 'red');
+    }
+}//end addRed
 

@@ -4,3 +4,10 @@ body, section {
 tr {
     font-size: larger;
 }
+table.employee-information tfoot {
+    text-align: right;
+    font-size: x-large;
+}
+tr:nth-child(even){
+    background-color: #dddddd;
+}
